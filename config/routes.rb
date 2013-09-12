@@ -1,4 +1,11 @@
 Cms::Application.routes.draw do
+  devise_for :users
+
+  resource  :home, controller: 'home'
+  resources :articles
+
+  root to: 'home#show'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

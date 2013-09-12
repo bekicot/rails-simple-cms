@@ -1,0 +1,9 @@
+<h1> Buat artikel </h1>
+
+<%= form_for @article, url: articles_path, method: :post do |form| %>
+	<%= render 'form', form: form, article: @article %>
+<% end %>
+
+<div>
+	<%= @nama %>
+</div>

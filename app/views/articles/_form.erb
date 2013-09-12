@@ -1,0 +1,28 @@
+<% if article.errors.any? %>
+		<div id="errorEplanation">
+			<h2>
+				<%= pluralize(article.errors.count, "error") %>
+				prohibited this post from being saved:
+			</h2>
+			<ul>
+				<% article.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+<p>
+	Judul : <%= form.text_field :title %>
+</p>
+<p>
+	Isi Artikel <br>
+	<%= form.text_area :body %>
+</p>
+	Masukan kategori <%= form.select :category_id, Category.all.map{|x| [x.name, x.id]} %> atau pilih salah satu dari 
+<p>
+	Author = <%= current_user.email %>
+</p>
+Pilih Kategori 
+
+<%= form.submit %>

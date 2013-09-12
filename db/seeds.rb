@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Category.destroy_all
+%w( category1 category2 category3 category4 ).each do |c|
+	Category.create(name: c)
+end
