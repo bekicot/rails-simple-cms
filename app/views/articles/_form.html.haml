@@ -1,0 +1,27 @@
+- if article.errors.any?
+    #errorExplanation
+      %h2
+        = pluralize(article.errors.count, "error")
+      %ul
+        - article.errors.full_messages.each do |msg|
+          %li= msg
+
+%p
+  Judul : #{form.text_field :title}
+
+%p
+  Isi Artikel 
+  %br/
+  = form.text_area :body
+
+%div
+  Masukan Kategori 
+  = form.select :category_id, Category.all.map{ |x| [x.name, x.id]}
+%p
+  Author = &nbsp 
+  = current_user.first_name
+
+= form.text_field :tags, :value => article.tags.join(', ')
+
+%div
+  = form.submit

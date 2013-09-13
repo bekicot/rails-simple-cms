@@ -1,0 +1,4 @@
+%h1 Edit Article
+
+= form_for @article, url: article_path(@article), method: :put do |f|
+  = render 'form', form: f, article: @article

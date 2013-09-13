@@ -10,7 +10,7 @@
 				<% end %>
 			</ul>
 		</div>
-	<% end %>
+<% end %>
 
 <p>
 	Judul : <%= form.text_field :title %>
@@ -19,10 +19,14 @@
 	Isi Artikel <br>
 	<%= form.text_area :body %>
 </p>
-	Masukan kategori <%= form.select :category_id, Category.all.map{|x| [x.name, x.id]} %> atau pilih salah satu dari 
+	Masukan kategori  <%= form.select :category_id, Category.all.map{|x| [x.name, x.id]} %>
 <p>
 	Author = <%= current_user.email %>
 </p>
-Pilih Kategori 
 
-<%= form.submit %>
+
+<%= form.text_field :tags, :value => article.tags.join(', ') %>
+<div>
+	<%= form.submit %>
+</div>
+

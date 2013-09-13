@@ -1,0 +1,4 @@
+%h1 Buat Article
+
+= form_for @article, url: articles_path, method: :post do |form|
+  = render 'form', form: form, article: @article

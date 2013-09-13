@@ -23,4 +23,12 @@ class Article < ActiveRecord::Base
 	validates :user,      presence: true 
 	validates :category,  presence: true 
 	accepts_nested_attributes_for :category
+
+
+	# Test Serialize data 
+
+	serialize :tags, Array
+
+
+
 end
