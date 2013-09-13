@@ -18,7 +18,10 @@ class ArticlesController < ApplicationController
 	def update
 		article_params['tags'] = Array[*article_params['tags'].split(',')]
 		params = article_params
+		ap params
+
 		params['tags'] = Array[*article_params['tags'].split(',')]
+		ap params
 		if @article.update_attributes(params)
 			redirect_to article_path(@article.id)
 		else
@@ -33,7 +36,6 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = current_user.articles.new(article_params)
-		ap article_params
 		ap @article[:tags]
 		@article[:tags] = Array[*article_params['tags'].split(',')]
 		if @article.save
@@ -57,6 +59,6 @@ class ArticlesController < ApplicationController
 	end
 
   def article_params
-    params.require(:article).permit(:title, :body, :name, :category_id, :tags)
+    params.require(:article).permit(:title, :body, :name, :category_id, :tags, :picture)
   end
 end

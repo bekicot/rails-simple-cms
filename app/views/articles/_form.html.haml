@@ -24,4 +24,8 @@
 = form.text_field :tags, :value => article.tags.join(', ')
 
 %div
+  = form.file_field :picture
+
+
+%div
   = form.submit

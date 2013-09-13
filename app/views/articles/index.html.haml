@@ -4,6 +4,8 @@
 .main
   - @article.each do |post|
     .head-content
+      .picture
+        = image_tag post.picture.url(:thumb), alt: post.title
       .title
         %h2= post.title
       .attributes
