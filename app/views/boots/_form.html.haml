@@ -1,0 +1,16 @@
+= form_for @boot do |f|
+  - if @boot.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@boot.errors.count, "error")} prohibited this boot from being saved:"
+      %ul
+        - @boot.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :dec
+    = f.text_field :dec
+  .actions
+    = f.submit 'Save'
