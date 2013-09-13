@@ -1,10 +1,10 @@
 - if article.errors.any?
-    #errorExplanation
-      %h2
-        = pluralize(article.errors.count, "error")
-      %ul
-        - article.errors.full_messages.each do |msg|
-          %li= msg
+  #errorExplanation
+    %h2
+      = pluralize(article.errors.count, "error")
+    %ul
+      - article.errors.full_messages.each do |msg|
+        %li= msg
 
 %p
   Judul : #{form.text_field :title}
