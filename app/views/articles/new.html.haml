@@ -1,3 +1,4 @@
+= render :partial => "/globals/nav"
 %h1 Buat Article
 
 = form_for @article, url: articles_path, method: :post, :html => { :multipart => true } do |form|

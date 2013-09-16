@@ -18,10 +18,8 @@ class ArticlesController < ApplicationController
 	def update
 		article_params['tags'] = Array[*article_params['tags'].split(',')]
 		params = article_params
-		ap params
 
 		params['tags'] = Array[*article_params['tags'].split(',')]
-		ap params
 		if @article.update_attributes(params)
 			redirect_to article_path(@article.id)
 		else

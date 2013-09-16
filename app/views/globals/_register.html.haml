@@ -1,0 +1,20 @@
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  %div
+    First Name : #{f.text_field :first_name, :autofocus => true}
+  %div
+    Last Name : 
+    = f.text_field :last_name
+  %div
+    Email : 
+    = f.email_field :email, :autofocus => true
+  %div
+    Password : 
+    = f.password_field :password
+  %div
+    Confirm Password : 
+    = f.password_field :password_confirmation
+  %div
+    Avatar : 
+    = f.file_field :avatar
+  %div= f.submit "Sign up"
