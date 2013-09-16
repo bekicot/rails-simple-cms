@@ -34,5 +34,13 @@ class User < ActiveRecord::Base
 
   # validations
   validates :first_name, :presence => true
+  validates :avatar, :presence => true
+
+  has_attached_file :avatar, 
+                    :styles => { 
+                      :medium => "300x300>", 
+                      :thumb => "60x60#" 
+                    }, 
+                    :default_url => "/assets/article.png"
 
 end

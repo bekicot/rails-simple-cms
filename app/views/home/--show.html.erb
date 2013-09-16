@@ -21,20 +21,20 @@ padding-right: 20px;
       <ul class="brand navlist">
       <li><a href="/articles">Articles</a></li>
 
-      <li>
-        <% if user_signed_in? %>
-          <%= link_to('Log out', destroy_user_session_path, :method => :delete) %>
-      <li>
-          <%= link_to('Edit Your Data', edit_user_registration_path) %>
-      </li>
-        <% else %>
-          <%= link_to('Log In', new_user_session_path) %>
-      <li>
-          <%= link_to('Sign Up', new_user_registration_path) %>
-      </li>
-      <% end %>
+        <li>
+          <% if user_signed_in? %>
+            <%= link_to('Log out', destroy_user_session_path, :method => :delete) %>
+        <li>
+            <%= link_to('Edit Your Data', edit_user_registration_path) %>
+        </li>
+          <% else %>
+            <%= link_to('Log In', new_user_session_path) %>
+        <li>
+            <%= link_to('Sign Up', new_user_registration_path) %>
+        </li>
+        <% end %>
 
-      </li>
+        </li>
 
       </ul>
       <% if user_signed_in? %>
