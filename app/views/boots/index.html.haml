@@ -1,0 +1,21 @@
+%h1 Listing boots
+
+%table
+  %tr
+    %th Title
+    %th Dec
+    %th
+    %th
+    %th
+
+  - @boots.each do |boot|
+    %tr
+      %td= boot.title
+      %td= boot.dec
+      %td= link_to 'Show', boot
+      %td= link_to 'Edit', edit_boot_path(boot)
+      %td= link_to 'Destroy', boot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Boot', new_boot_path

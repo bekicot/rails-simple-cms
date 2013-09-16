@@ -1,10 +1,10 @@
 - if article.errors.any?
-    #errorExplanation
-      %h2
-        = pluralize(article.errors.count, "error")
-      %ul
-        - article.errors.full_messages.each do |msg|
-          %li= msg
+  .control-group.error
+    %h2
+      = pluralize(article.errors.count, "error")
+    %ul
+      - article.errors.full_messages.each do |msg|
+        %li= msg
 
 %p
   Judul : #{form.text_field :title}
@@ -22,6 +22,10 @@
   = current_user.first_name
 
 = form.text_field :tags, :value => article.tags.join(', ')
+
+%div
+  = form.file_field :picture
+
 
 %div
   = form.submit

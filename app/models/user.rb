@@ -17,6 +17,10 @@
 #  updated_at             :datetime
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
@@ -30,5 +34,13 @@ class User < ActiveRecord::Base
 
   # validations
   validates :first_name, :presence => true
+  validates :avatar, :presence => true
+
+  has_attached_file :avatar, 
+                    :styles => { 
+                      :medium => "300x300>", 
+                      :thumb => "60x60#" 
+                    }, 
+                    :default_url => "/assets/article.png"
 
 end

@@ -1,20 +1,19 @@
+= render 'navbar'
 %h1 Index Artikel
 
-%table
-  %tr
-    %th Title
-    %th Text
-    %th Author
-    %th Category
-    %th Tags
+.main
   - @article.each do |post|
-
-    %tr
-      %td= post.title 
-      %td= post.body
-      %td= post.user.first_name
-      %td= post.category.name
-      %td= post.tags.join(', ')
-      %td= link_to 'Show', article_path(post)
-      %td= link_to 'Edit', edit_article_path(post)
-      %td= link_to 'Delete Article', article_path(post), method: :delete, data: { confirm: 'Are You Sure ?' }
+    .head-content
+      .picture
+        = image_tag post.picture.url(:thumb), alt: post.title
+      .title
+        %h2= post.title
+      .attributes
+        %span.author Author : #{ post.user.first_name }
+        %span.editing #{link_to 'Show', article_path(post)} | #{link_to 'Edit', edit_article_path(post)} | #{link_to 'Delete Article', article_path(post), method: :delete, data: { confirm: 'Are You Sure ?' }}
+    .main-content
+      .body
+        = post.body
+      .attributes
+        %span Category #{ post.category.name }
+        %span Tags #{ post.tags.join(', ') }

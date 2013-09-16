@@ -1,4 +1,6 @@
 Cms::Application.routes.draw do
+  resources :boots
+
   devise_for :users
 
   resource  :home, controller: 'home'

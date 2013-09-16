@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @boot.title
+%p
+  %b Dec:
+  = @boot.dec
+
+= link_to 'Edit', edit_boot_path(@boot)
+\|
+= link_to 'Back', boots_path

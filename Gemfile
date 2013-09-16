@@ -9,8 +9,8 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'haml-rails', '>= 0.3.4'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 1.2'
 
 # Authentication Modul
 gem 'devise'
+
+# Upload Image
+gem "paperclip", "~> 3.0"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

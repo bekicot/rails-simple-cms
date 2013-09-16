@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_filter :authenticate_user!
-	before_action :article_params, only: [:create]
+	before_filter :article_def, only: [:edit, :show, :update, :destroy]
 
 	def index
 		@article = current_user.articles.all
@@ -8,31 +8,34 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		@article = current_user.articles.find(params[:id])
-		tags = @article[:tags]
-		ap tags
 	end
 
 	def show
-		@article = current_user.articles.find(params[:id])	
 		tags = @article[:tags]
 		@article[:tags] = tags.join(',')	
 	end
 
 	def update
-		@article = current_user.articles.new(article_params)
-		redirect_to article_path(@article.id)
+		article_params['tags'] = Array[*article_params['tags'].split(',')]
+		params = article_params
+		ap params
+
+		params['tags'] = Array[*article_params['tags'].split(',')]
+		ap params
+		if @article.update_attributes(params)
+			redirect_to article_path(@article.id)
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
-		@article = current_user.articles.find(params[:id])
 		@article.destroy
 		redirect_to @article
 	end
 
 	def create
 		@article = current_user.articles.new(article_params)
-		ap article_params
 		ap @article[:tags]
 		@article[:tags] = Array[*article_params['tags'].split(',')]
 		if @article.save
@@ -51,7 +54,11 @@ class ArticlesController < ApplicationController
 
 	private
 
+	def article_def
+		@article = current_user.articles.find(params[:id])
+	end
+
   def article_params
-    params.require(:article).permit(:title, :body, :name, :category_id, :tags)
+    params.require(:article).permit(:title, :body, :name, :category_id, :tags, :picture)
   end
 end

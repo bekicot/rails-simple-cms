@@ -2,14 +2,18 @@
 #
 # Table name: articles
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  category_id :integer
-#  title       :string(255)
-#  body        :string(255)
-#  tags        :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                   :integer          not null, primary key
+#  user_id              :integer
+#  category_id          :integer
+#  title                :string(255)
+#  body                 :string(255)
+#  tags                 :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

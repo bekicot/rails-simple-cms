@@ -1,0 +1,107 @@
+= render 'nav'
+
+.container        
+  .row-fluid
+    .span8
+
+      - if !user_signed_in?
+
+        Sign Up To Gain Access To Read Article
+        .registration-form
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            %div
+              First Name : #{f.text_field :first_name, :autofocus => true}
+            %div
+              Last Name : 
+              = f.text_field :last_name
+            %div
+              Email : 
+              = f.email_field :email, :autofocus => true
+            %div
+              Password : 
+              = f.password_field :password
+            %div
+              Confirm Password : 
+              = f.password_field :password_confirmation
+            %div
+              Avatar : 
+              = f.file_field :avatar
+            %div= f.submit "Sign up"
+
+      - else
+        .warning
+          Article dari semua user
+
+        .articles
+          %table.table.table-striped.table-hover
+            %thead
+              %tr
+                %th No
+                %td Title
+                %td Author
+                %td Category
+            - i = 1
+            %tbody
+              - @article.each do |post|
+
+                %tr
+                  %td 
+                    %a{:href => "#{article_path(post)}"}
+                      %div{:style => "width: 100%; height: 100%;"}= i
+                  %td
+                    %a{:href => "#{article_path(post)}"}
+                      %div{:style => "width: 100%; height: 100%;"}= post.title
+                  %td
+                    %a{:href => "#{article_path(post)}"}
+                      %div{:style => "width: 100%; height: 100%;"}= post.user.first_name
+                  %td
+                    %a{:href => "#{article_path(post)}"}
+                      %div{:style => "width: 100%; height: 100%;"}= post.category.name
+                - i = i + 1
+
+      .row-fluid
+        .span6
+          Fluid 61
+        .span6
+          Fluid 62
+    .span3
+
+      - if !user_signed_in?
+
+        = form_for(:user, :as => resource_name, :url => session_path(resource_name)) do |f|
+
+          .login-form
+            .email
+              = f.label :email
+              %br
+              = f.email_field :email, :autofocus => true
+            .password
+              = f.label :password
+              %br
+              = f.password_field :password
+
+            - if devise_mapping.rememberable?
+              .remember-me
+                = f.check_box :remember_me
+                = f.label :remember_me
+            .sign-in
+              = f.submit "Sign In"
+
+
+
+        
+
+      - else
+        .bar-welcome
+          Hi, #{ current_user.first_name}
+          .avatar
+            = image_tag current_user.avatar.url(:original)
+
+
+
+
+
+
+
+
